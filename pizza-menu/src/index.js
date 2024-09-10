@@ -64,7 +64,7 @@ function Header() {
 }
 
 function Menu() {
-  return <div>
+  return <div className='menu'>
     <h1 className='header'>Our Menu</h1>
     <ul className='pizzas'>
     {pizzaData.map(pizza => <Pizza key={pizza.name} {...pizza} />)}
@@ -75,15 +75,15 @@ function Menu() {
 
 function Pizza(props) {
   return ( 
-  props.soldOut ? null : (
-  <li className="pizza">
+  
+  <li className={`pizza ${ props.soldOut ? "sold-out" : "" }`}>
       <img src={props.photoName} alt={props.name}></img>
       <div>
         <h3>{props.name}</h3>
         <p>{props.ingredients}</p>
-        <span>${props.price + 3},00</span>
+        <span>{ props.soldOut ? "SOLD OUT" : `$ ${props.price + 3} ,00`}</span>
       </div>
-    </li>)
+    </li>
   )}
 
 
